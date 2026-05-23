@@ -1,12 +1,13 @@
 {
   "name": "Extension Crash Course",
   "description": "Browser extension created from scratch",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup/popup.html"
-  }
+  },
+  "options_page": "options/options.html"
 }
