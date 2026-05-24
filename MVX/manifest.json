@@ -1,7 +1,13 @@
 {
   "name": "MVX",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "sandbox": {
+    "pages": ["popup.html"]
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
