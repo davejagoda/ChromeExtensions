@@ -2,6 +2,11 @@ console.log("Initialized background script!");
 chrome.runtime.onInstalled.addListener((object) => {
   console.log("Installed background script!");
 });
-import "./fetch-page.js";
-console.log("Imported fetch-page.js");
-throw new Error("foo");
+// import "./fetch-page.js";
+// console.log("Imported fetch-page.js");
+// throw new Error("foo");
+chrome.action.onClicked.addListener(() => {
+  console.log("Clicked toolbar icon!");
+});
+let elapsed = 0;
+setInterval(() => console.log(`${++elapsed}s`), 1000);
