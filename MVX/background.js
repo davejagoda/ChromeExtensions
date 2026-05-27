@@ -4,3 +4,4 @@ chrome.runtime.onInstalled.addListener((object) => {
 });
 import "./fetch-page.js";
 console.log("Imported fetch-page.js");
+throw new Error("foo");
