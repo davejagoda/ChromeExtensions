@@ -1,7 +1,17 @@
 {
   "name": "MVX",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "manifest_version": 3,
+  "permissions": ["alarms", "tabs"],
+  "commands": {
+    "foobar": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+J",
+        "mac": "MacCtrl+Shift+J"
+      },
+      "description": "Perform foobar action"
+    }
+  },
   "action": {
 //    "default_popup": "popup.html"
   },
