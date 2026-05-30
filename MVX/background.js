@@ -61,6 +61,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // Send the tab's ID back to the content script
     sendResponse({ currentTabId: sender.tab.id });
   }
+  if (request.type === "openTab") {
+    chrome.tabs.create({ url: request.url });
+  }
 });
 // This will fire when the content script
 // calls runtime.connect()
