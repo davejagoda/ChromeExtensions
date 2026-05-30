@@ -1,4 +1,5 @@
 console.log("Initialized background script!");
+console.log("This will run each time the service worker starts");
 const filter = {
   url: [
     {
@@ -11,8 +12,25 @@ function wipeOutPage() {
   document.body.innerHTML = "";
 }
 // Logs when the extension is installed
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   console.log("Installed background script!");
+  switch (details.reason) {
+    case chrome.runtime.OnInstalledReason.INSTALL:
+      console.log("This runs when the extension is newly installed.");
+      break;
+    case chrome.runtime.OnInstalledReason.CHROME_UPDATE:
+      console.log("This runs when a chrome update installs.");
+      break;
+    case chrome.runtime.OnInstalledReason.SHARED_MODULE_UPDATE:
+      console.log("This runs when a shared module update installs.");
+      break;
+    case chrome.runtime.OnInstalledReason.UPDATE:
+      console.log("This runs when an extension update installs.");
+      break;
+    default:
+      console.log(`This runs when ${details.reason}`);
+      break;
+  }
 });
 chrome.alarms.create("My alarm", { periodInMinutes: 1 });
 // Logs every minute
@@ -66,4 +84,4 @@ chrome.webNavigation.onDOMContentLoaded.addListener((details) => {
 // console.log("Imported fetch-page.js");
 // throw new Error("foo");
 let elapsed = 0;
-setInterval(() => console.log(`${++elapsed}s`), 1000);
+// setInterval(() => console.log(`${++elapsed}s`), 1000);
