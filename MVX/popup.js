@@ -5,3 +5,6 @@ document.querySelector("#url").innerHTML = `
 document.querySelector("#xid").innerHTML = `
 <pre>Extension ID: ${chrome.runtime.id}</pre>
 `;
+document.querySelector("#opts").addEventListener(
+  "click",
+  () => chrome.runtime.openOptionsPage());

@@ -1,6 +1,6 @@
 {
   "name": "MVX",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
@@ -25,6 +25,10 @@
 //  "sandbox": {
 //    "pages": ["popup.html"]
 //  },
+  "options_ui": {
+    "open_in_tab": false,
+    "page": "options.html"
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
