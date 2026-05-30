@@ -1,4 +1,12 @@
 console.log("Initialized background script!");
+const filter = {
+  url: [
+    {
+      urlMatches: "https://blank.org/",
+    },
+  ],
+};
+
 function wipeOutPage() {
   document.body.innerHTML = "";
 }
@@ -46,6 +54,13 @@ chrome.runtime.onConnect.addListener((port) => {
     // Subtract 1 and send value back up to content script
     port.postMessage({ value: msg.value - 1 });
   });
+});
+// Sniffing Web Traffic
+chrome.webNavigation.onCompleted.addListener(() => {
+  console.log("Visited the special site!");
+}, filter);
+chrome.webNavigation.onDOMContentLoaded.addListener((details) => {
+  console.log(`Loaded ${details.url}!`);
 });
 // import "./fetch-page.js";
 // console.log("Imported fetch-page.js");

@@ -1,12 +1,13 @@
 {
   "name": "MVX",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
     "alarms",
     "scripting",
-    "tabs"
+    "tabs",
+    "webNavigation"
   ],
   "commands": {
     "foobar": {
