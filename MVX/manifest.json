@@ -1,6 +1,6 @@
 {
   "name": "MVX",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
@@ -9,6 +9,7 @@
     "tabs",
     "webNavigation"
   ],
+  "host_permissions": ["<all_urls>"],
   "commands": {
     "foobar": {
       "suggested_key": {

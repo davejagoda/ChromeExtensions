@@ -11,6 +11,32 @@ const filter = {
 function wipeOutPage() {
   document.body.innerHTML = "";
 }
+
+let lifeline;
+// Disconnect and reconnect
+function keepAliveForced() {
+  lifeline?.disconnect();
+  lifeline = null;
+  keepAlive();
+}
+async function keepAlive() {
+  if (lifeline) {
+    return;
+  }
+  // Locate any eligible tab and connect to it
+  for (const tab of await chrome.tabs.query({})) {
+    try {
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: () => chrome.runtime.connect({
+          name: "KEEPALIVE"
+        }),
+      });
+      return;
+    } catch (e) {}
+  }
+}
+
 // Logs when the extension is installed
 chrome.runtime.onInstalled.addListener((details) => {
   console.log("Installed background script!");
@@ -38,8 +64,12 @@ chrome.alarms.onAlarm.addListener((alarmInfo) => {
   console.log(`Alarm fired: ${alarmInfo.name}`);
 });
 // Logs when the tab state changes
-chrome.tabs.onUpdated.addListener(() => {
+// Any tab change means reconnecting may be required
+chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
   console.log("Tabs updated");
+  if (info.url && /^(file|https?):/.test(info.url)) {
+    keepAlive();
+  }
 });
 // Logs when Ctrl+Shift+J is typed
 chrome.commands.onCommand.addListener((command) => {
@@ -75,6 +105,12 @@ chrome.runtime.onConnect.addListener((port) => {
     // Subtract 1 and send value back up to content script
     port.postMessage({ value: msg.value - 1 });
   });
+  if (port.name == "KEEPALIVE") {
+    lifeline = port;
+    // Refresh the connection after 1 minute
+    setTimeout(keepAliveForced, 6e4);
+    port.onDisconnect.addListener(keepAliveForced);
+  }
 });
 // Sniffing Web Traffic
 chrome.webNavigation.onCompleted.addListener(() => {
@@ -86,5 +122,6 @@ chrome.webNavigation.onDOMContentLoaded.addListener((details) => {
 // import "./fetch-page.js";
 // console.log("Imported fetch-page.js");
 // throw new Error("foo");
+keepAlive();
 let elapsed = 0;
-// setInterval(() => console.log(`${++elapsed}s`), 1000);
+setInterval(() => console.log(`Elapsed ${++elapsed}s`), 1000);
