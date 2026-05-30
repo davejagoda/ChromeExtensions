@@ -1,6 +1,6 @@
 {
   "name": "MVX",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
@@ -20,7 +20,7 @@
     }
   },
   "action": {
-//    "default_popup": "popup.html"
+    "default_popup": "popup.html"
   },
 //  "sandbox": {
 //    "pages": ["popup.html"]
