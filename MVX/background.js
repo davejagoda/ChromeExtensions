@@ -1,5 +1,7 @@
 console.log("Initialized background script!");
-
+function wipeOutPage() {
+  document.body.innerHTML = "";
+}
 // Logs when the extension is installed
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Installed background script!");
@@ -18,8 +20,12 @@ chrome.commands.onCommand.addListener((command) => {
   console.log(`Command: ${command}`);
 });
 // Logs when the toolbar icon is clicked
-chrome.action.onClicked.addListener(() => {
+chrome.action.onClicked.addListener((tab) => {
   console.log("Clicked toolbar icon!");
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: wipeOutPage,
+  });
 });
 // Messages include information about the sender
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
