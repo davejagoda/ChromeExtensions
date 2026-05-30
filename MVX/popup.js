@@ -1,3 +1,4 @@
+chrome.runtime.sendMessage({ type: "POPUP_OPENED" });
 document.querySelector("#url").innerHTML = `
 <pre>Page URL: ${window.location.href}</pre>
 `;

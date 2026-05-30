@@ -94,6 +94,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === "openTab") {
     chrome.tabs.create({ url: request.url });
   }
+  if (request.type === "POPUP_OPENED") {
+    console.log("Popup has been opened");
+  }
 });
 // This will fire when the content script
 // calls runtime.connect()
@@ -124,4 +127,9 @@ chrome.webNavigation.onDOMContentLoaded.addListener((details) => {
 // throw new Error("foo");
 keepAlive();
 let elapsed = 0;
-setInterval(() => console.log(`Elapsed ${++elapsed}s`), 1000);
+// setInterval(() => console.log(`Elapsed ${++elapsed}s`), 1000);
+/*
+chrome.action.setPopup({
+  popup: chrome.runtime.getURL("foobar.html")
+});
+*/
