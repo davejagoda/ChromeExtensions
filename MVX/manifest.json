@@ -1,6 +1,6 @@
 {
   "name": "MVX",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
@@ -26,7 +26,7 @@
 //    "pages": ["popup.html"]
 //  },
   "options_ui": {
-    "open_in_tab": false,
+    "open_in_tab": true,
     "page": "options.html"
   },
   "background": {
