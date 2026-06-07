@@ -1,4 +1,6 @@
 console.log("content-script.js");
+console.log(window.jQuery);
+document.body.innerHTML = "<h1>Hello, world!</h1>";
 import(chrome.runtime.getURL("fetch-page.js"));
 const el = document.createElement("script");
 el.src = chrome.runtime.getURL("fetch-page.js");
@@ -27,6 +29,7 @@ function initializeCountdown(currentTabId) {
 }
 // Send a call/response message to the background
 // to determine current tab's ID
+/*
 chrome.runtime.sendMessage(
   // Providing a type allows the background to filter
   // incoming messages
@@ -34,12 +37,13 @@ chrome.runtime.sendMessage(
   // Background can reply to this message with the tab ID
   (response) => initializeCountdown(response.currentTabId)
 );
+*/
 // opening tabs
 const root = document.createElement("div");
 root.innerHTML = `
-<div style="position:fixed;top:0;left:0">
-    <button id="direct-open">THIS WILL NOT WORK</button>
-    <button id="indirect-open">THIS WILL WORK</button>
+<div>
+  <button id="direct-open">THIS WILL NOT WORK</button>
+  <button id="indirect-open">THIS WILL WORK</button>
 </div>
 `;
 document.body.appendChild(root);
