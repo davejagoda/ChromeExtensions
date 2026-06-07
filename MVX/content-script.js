@@ -102,5 +102,12 @@ if (input && form) {
   setTimeout(() => {
     input.focus();
     typeOrSubmit();
-  }, 2000);
+  }, 4000);
 }
+
+setTimeout(() => {
+  const el = document.querySelector("#js-lang-list-button");
+  // Scroll down to the button so we can see the click work
+  el.scrollIntoView();
+  el.dispatchEvent(new Event("click"));
+}, 2000);
