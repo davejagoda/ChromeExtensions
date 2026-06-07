@@ -1,6 +1,6 @@
 console.log("content-script.js");
 console.log(window.jQuery);
-document.body.innerHTML = "<h1>Hello, world!</h1>";
+document.body.innerHTML = "Hello, world!";
 import(chrome.runtime.getURL("fetch-page.js"));
 const el = document.createElement("script");
 el.src = chrome.runtime.getURL("fetch-page.js");
