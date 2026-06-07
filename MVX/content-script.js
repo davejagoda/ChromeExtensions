@@ -1,10 +1,12 @@
 console.log("content-script.js");
 console.log(window.jQuery);
-document.body.innerHTML = "Hello, world!";
+// document.body.innerHTML = "Hello, world!";
 import(chrome.runtime.getURL("fetch-page.js"));
+/*
 const el = document.createElement("script");
 el.src = chrome.runtime.getURL("fetch-page.js");
 document.body.appendChild(el);
+*/
 function initializeCountdown(currentTabId) {
   // This will fire the runtime.onConnect event
   // in the background
@@ -57,3 +59,13 @@ document.querySelector("#indirect-open").addEventListener("click", () => {
     url
   });
 });
+
+for (const el of document.querySelectorAll("style")) {
+  el.parentElement.removeChild(el);
+}
+for (const el of document.querySelectorAll('link[rel="stylesheet"]')) {
+  el.parentElement.removeChild(el);
+}
+for (const el of document.querySelectorAll("[style]")) {
+  el.removeAttribute("style");
+}
