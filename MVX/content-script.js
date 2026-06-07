@@ -41,6 +41,7 @@ chrome.runtime.sendMessage(
 );
 */
 // opening tabs
+/*
 const root = document.createElement("div");
 root.innerHTML = `
 <div>
@@ -59,7 +60,9 @@ document.querySelector("#indirect-open").addEventListener("click", () => {
     url
   });
 });
+*/
 
+/*
 for (const el of document.querySelectorAll("style")) {
   el.parentElement.removeChild(el);
 }
@@ -69,3 +72,13 @@ for (const el of document.querySelectorAll('link[rel="stylesheet"]')) {
 for (const el of document.querySelectorAll("[style]")) {
   el.removeAttribute("style");
 }
+*/
+
+// Wait a few seconds so the user
+// can see the query being entered
+setTimeout(() => {
+  document.querySelector("#searchInput").value = "javascript";
+}, 2000);
+setTimeout(() => {
+  document.querySelector('button[type="submit"]').click();
+}, 3000);
