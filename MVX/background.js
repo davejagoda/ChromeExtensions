@@ -4,12 +4,10 @@ chrome.action.onClicked.addListener((tab) => {
   };
   chrome.scripting.executeScript({
     target,
-    func: () => {
-      document.body.innerHTML = `Hello, world!`;
-    },
+    files: ["content-script.js"],
   });
   chrome.scripting.insertCSS({
     target,
-    css: `body { background-color: red !important; }`,
+    files: ["content-script.css"],
   });
 });
