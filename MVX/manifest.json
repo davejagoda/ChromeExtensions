@@ -1,19 +1,14 @@
 {
   "name": "MVX",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "manifest_version": 3,
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "css": [],
-      "js": ["content-script.js"]
-    }
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
   ],
-  "permissions": [],
-  "web_accessible_resources": [
-    {
-      "resources": ["*.js"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  "action": {}
 }
