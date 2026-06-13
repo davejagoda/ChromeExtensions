@@ -19,3 +19,7 @@ chrome.devtools.panels.create(
   "Devtools Traffic",
   "",
   "traffic_panel.html");
+chrome.devtools.panels.create(
+  "Devtools Inspector",
+  "",
+  "inspect_panel.html");
