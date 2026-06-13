@@ -23,3 +23,9 @@ chrome.devtools.panels.create(
   "Devtools Inspector",
   "",
   "inspect_panel.html");
+chrome.devtools.panels.elements.createSidebarPane(
+  "Devtools Inspector",
+  (sidebar) => {
+    sidebar.setPage("inspect_panel.html");
+  }
+);
