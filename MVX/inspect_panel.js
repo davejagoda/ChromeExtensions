@@ -1,9 +1,10 @@
 document.querySelector("#check").addEventListener("click", () => {
   chrome.devtools.inspectedWindow.eval(
-    `({
-      'url': window.location.href,
-      'usesJquery': !!window.jQuery
-    })`,
+    `(() => {
+     const url = window.location.href;
+     const usesJquery = !!window.jQuery;
+     return { url, usesJquery };
+   })()`,
     null,
     (result) => {
       const div = document.createElement("div");
