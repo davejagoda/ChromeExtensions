@@ -15,3 +15,7 @@ chrome.devtools.panels.elements.createSidebarPane(
     sidebar.setPage("elements_sidebar.html");
   }
 );
+chrome.devtools.panels.create(
+  "Devtools Traffic",
+  "",
+  "traffic_panel.html");
