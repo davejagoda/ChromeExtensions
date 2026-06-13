@@ -1,7 +1,9 @@
 {
   "name": "MVX",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "manifest_version": 3,
+  "action": {},
+  "devtools_page": "devtools.html",
   "background": {
     "service_worker": "background.js",
     "type": "module"
@@ -9,6 +11,5 @@
   "permissions": [
     "activeTab",
     "scripting"
-  ],
-  "action": {}
+  ]
 }
