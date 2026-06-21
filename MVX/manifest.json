@@ -1,13 +1,10 @@
 {
   "name": "MVX",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
   },
-  "action": {},
-  "permissions": [
-    "webNavigation"
-  ]
+  "permissions": ["storage"]
 }
