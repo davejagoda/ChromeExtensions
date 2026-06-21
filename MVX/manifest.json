@@ -1,10 +1,10 @@
 {
   "name": "MVX",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "manifest_version": 3,
   "options_ui": {
     "open_in_tab": true,
     "page": "options.html"
   },
-  "permissions": ["storage"]
+  "optional_permissions": ["storage"]
 }
