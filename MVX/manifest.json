@@ -1,6 +1,6 @@
 {
   "name": "MVX",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "manifest_version": 3,
   "options_ui": {
     "open_in_tab": true,
